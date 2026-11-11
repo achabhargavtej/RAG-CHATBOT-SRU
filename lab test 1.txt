@@ -1,0 +1,45 @@
+
+# Vehicle Rental System using Factory Method
+
+class Car:
+    def rent(self):
+        print("Car rented successfully!")
+
+class Bike:
+    def rent(self):
+        print("Bike rented successfully!")
+
+class Bus:
+    def rent(self):
+        print("Bus rented successfully!")
+
+
+class VehicleFactory:
+
+    @staticmethod
+    def get_vehicle(vehicle_type):
+
+        if vehicle_type.lower() == "car":
+            return Car()
+
+        elif vehicle_type.lower() == "bike":
+            return Bike()
+
+        elif vehicle_type.lower() == "bus":
+            return Bus()
+
+        else:
+            return None
+
+
+print("Welcome to Vehicle Rental System")
+
+vehicle_type = input("Enter vehicle type (Car/Bike/Bus): ")
+
+vehicle = VehicleFactory.get_vehicle(vehicle_type)
+
+if vehicle:
+    vehicle.rent()
+else:
+    print("Invalid vehicle type!")
+
